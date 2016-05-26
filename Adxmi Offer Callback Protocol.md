@@ -7,31 +7,31 @@
 *	After setting callback url in [Developer Control Panel](https://www.adxmi.com/apps#/settings), Adxmi will allocate an individual secret key `callback_token` for signature using.
 
 ###Callback Parameters
-| Key 		| Value Description |
-| :-------- | :---------------- |
-| order		| The unique id of the order. If developer receives the same order ID, that means the order is already existed. |
-| app		| your application id |
-| ad		| The name of the offer |
-| adid		| The id of the offer |
-| user		| User ID: Developers can set up their own `user_id` In Offers API, then user ID can be used to replace the CID identification which is offered by Adxmi. (Adxmi will generate an identification number for each device) Otherwise, Adxmi will use CID as user ID. |
-| revenue	| The revenue($) that developer can earn |
-| points    | The currency points that users can earn |
-| time		| The time that Adxmi create this order |
-| storeid   | Id from application store |
-| pkg		| package name of campaign app |
-| sign		| Parameters signature, used for verify the integrity of the above parameters, to prevent the third party to tamper with them. |
+| Key     | Value Description                                                                                                                                                                                                                                                |
+|---------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| order   | The unique id of the order. If developer receives the same order ID, that means the order is already existed.                                                                                                                                                    |
+| app     | your application id                                                                                                                                                                                                                                              |
+| ad      | The name of the offer                                                                                                                                                                                                                                            |
+| adid    | The id of the offer                                                                                                                                                                                                                                              |
+| user    | User ID: Developers can set up their own `user_id` In Offers API, then user ID can be used to replace the CID identification which is offered by Adxmi. (Adxmi will generate an identification number for each device) Otherwise, Adxmi will use CID as user ID. |
+| revenue | The revenue($) that developer can earn                                                                                                                                                                                                                           |
+| points  | The currency points that users can earn                                                                                                                                                                                                                          |
+| time    | The time that Adxmi create this order                                                                                                                                                                                                                            |
+| storeid | Id from application store                                                                                                                                                                                                                                        |
+| pkg     | package name of campaign app                                                                                                                                                                                                                                     |
+| sign    | Parameters signature, used for verify the integrity of the above parameters, to prevent the third party to tamper with them.                                                                                                                                     |
 
 ###Signature Algorithm
-	
+
 *	Use all parameters except `sign` in 【Callback Parameters】 list as key to compute MD5 value. Assume that the parameters participate in computing signature are k1,k2,k3, then the signature calculation method is below:
 
-	Formatting the non-binary type request parameters to key=value format. For example: k1=v1,k2=v2,k3=v3 Sort the key-value in ascending order and connect them together. For example: k1=v1k2=v2k3=v3 Append `callback_token` after the conneted key-value string. MD5 of the above string is the signature value. 
+	Formatting the non-binary type request parameters to key=value format. For example: k1=v1,k2=v2,k3=v3 Sort the key-value in ascending order and connect them together. For example: k1=v1k2=v2k3=v3 Append `callback_token` after the conneted key-value string. MD5 of the above string is the signature value.
 
 *	`Notice`:
-	*	Don't include the sign(signature) parameters when calculating the signature. 
-	*	The parameters in signature procedure have not been processed by urlencode. 
-	*	In order to ensure the signature won't be abnormal when changing the callback parameters, please make sure using the verification function we offer as the verification method. 
-	*	If developer's callback url contains parameters not mentioned above, these parameters will also join in the signature. 
+	*	Don't include the sign(signature) parameters when calculating the signature.
+	*	The parameters in signature procedure have not been processed by urlencode.
+	*	In order to ensure the signature won't be abnormal when changing the callback parameters, please make sure using the verification function we offer as the verification method.
+	*	If developer's callback url contains parameters not mentioned above, these parameters will also join in the signature.
 
 ###Verification Function
 
@@ -49,7 +49,7 @@ function verifySignature($callback_url, $callback_token){
 	            if (strpos($p, '=') !== false){
 	                list($k, $v) = explode('=', $p);
 	                if($k == "sign"){
-	                    $sign = $v; 
+	                    $sign = $v;
 	                }else{
 	                    $params[$k] = urldecode($v);
 	                }
@@ -57,14 +57,14 @@ function verifySignature($callback_url, $callback_token){
 	        }
 	    }
 	}
-	
+
 	$str = '';
 	ksort($params);
 	foreach ($params as $k => $v) {
 	    $str .= "{$k}={$v}";
 	}
 	$str .= $callback_token;
-	
+
 	return $sign == md5($str);
 }
 ```
