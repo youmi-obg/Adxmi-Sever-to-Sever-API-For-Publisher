@@ -13,7 +13,7 @@ Here is the general principle of Adxmi Sever to Sever API
 
 In order to use this api, publishers need to go to our official website (www.adxmi.com) to create an application and get the app_id and app_secret, which are used for Adxmi Api request.
 
-## API Request 
+## API Request
 ### API Request url
 
 >  http://ad.api.yyapi.net/v1/offline
@@ -21,12 +21,12 @@ In order to use this api, publishers need to go to our official website (www.adx
 ### Request Parameter
 
 
-Parameter | Description | Type| Mandatory
- -----|:----| :----:|:----:
-app_id |Apply from www.adxmi.com for the application  | string|   Y
-sign| Signature for query parameters. See URL Signature Function for detail|  string|Y  
-page_size  | Define the number of offers per page|int|Y  
-page|Define which page to fetch(start with 1)|int|Y
+| Parameter | Description                                                           | Type   | Mandatory |
+|-----------|-----------------------------------------------------------------------|--------|-----------|
+| app_id    | Apply from www.adxmi.com for the application                          | string | Y         |
+| sign      | Signature for query parameters. See URL Signature Function for detail | string | Y         |
+| page_size | Define the number of offers per page                                  | int    | Y         |
+| page      | Define which page to fetch(start with 1)                              | int    | Y         |
 
 #### Notice
 - page_size would like be less than 500 in case of request timeout.
@@ -38,38 +38,38 @@ page|Define which page to fetch(start with 1)|int|Y
 ## Response Field
 ### Response Parameter
 
-Parameter | Description | Type
- ----- |:----| :----:
- id    |The id of the offer |string
- name  |The name of the offer |string
-package|The package name of the offer |string
-adtxt|The introduction of the offer|string
-task|The introduction of how to complete the offer|string|
-payout|The revenue($) of the offer|string|
-point|The amount of virtual currency that will be earned for completing the offer(exchange rate is set on www.adxmi.com ) |int|
-cap|The maximum conversion allowed of the offer |int|
-trackinglink|The link that is used to track conversion|string|
-countries|The target countries of the offer(empty means global)|array|
-os|The target operating system of the offer(`ios` or `android`)|string|
-traffic|The value is `incentive` or `non-incentive`|string|
-os_version|The min os version of the offer (eg:4.2.2)|string|
-carrier|The target carrier of the offer|string|
-device|The target hardware brand of the offer|string|
-nettype|The target net type of the offer|string|
-preview_url|The preview url of the offer|string|
-icon_url|The link to the icon of the offer|string|
-creatives|The image materials of the offer|array|
-category|The category of the offer|string|
-store_label|The store (AppStore/GooglePlay) label of the offer|array|
-store_rating|The store (AppStore/GooglePlay) rating of the offer|float|
-size|The size of the package|string|
-mandatory_device|The mandatory device that offer needs to finish a conversion .`true` means mandatory|array|
+| Parameter        | Description                                                                                                         | Type   |
+|------------------|---------------------------------------------------------------------------------------------------------------------|--------|
+| id               | The id of the offer                                                                                                 | string |
+| name             | The name of the offer                                                                                               | string |
+| package          | The package name of the offer                                                                                       | string |
+| adtxt            | The introduction of the offer                                                                                       | string |
+| task             | The introduction of how to complete the offer                                                                       | string |
+| payout           | The revenue($) of the offer                                                                                         | string |
+| point            | The amount of virtual currency that will be earned for completing the offer(exchange rate is set on www.adxmi.com ) | int    |
+| cap              | The maximum conversion allowed of the offer                                                                         | int    |
+| trackinglink     | The link that is used to track conversion                                                                           | string |
+| countries        | The target countries of the offer(empty means global)                                                               | array  |
+| os               | The target operating system of the offer(`ios` or `android`)                                                        | string |
+| traffic          | The value is `incentive` or `non-incentive`                                                                         | string |
+| os_version       | The min os version of the offer (eg:4.2.2)                                                                          | string |
+| carrier          | The target carrier of the offer                                                                                     | string |
+| device           | The target hardware brand of the offer                                                                              | string |
+| nettype          | The target net type of the offer(`2g`、`2.5g`、`3g`、`4g`、`wifi`)                                                  | string |
+| preview_url      | The preview url of the offer                                                                                        | string |
+| icon_url         | The link to the icon of the offer                                                                                   | string |
+| creatives        | The image materials of the offer                                                                                    | array  |
+| category         | The category of the offer                                                                                           | string |
+| store_label      | The store (AppStore/GooglePlay) label of the offer                                                                  | array  |
+| store_rating     | The store (AppStore/GooglePlay) rating of the offer                                                                 | float  |
+| size             | The size of the package                                                                                             | string |
+| mandatory_device | The mandatory device that offer needs to finish a conversion .`true` means mandatory                                | array  |
 
 #### Notice
 - "cap" will be 0 if there is no limit.
 - "countries" will be an empty array if the offer is global.
 
-#### Example 
+#### Example
 
 ```javascript
     {
@@ -154,31 +154,31 @@ mandatory_device|The mandatory device that offer needs to finish a conversion .`
     "page_size": 20,
     "adn": 1
 }
-```  
+```
 ### Offer Category
 
-category |Description
- -----| :----
-SDL| The app that is  listed publicly on store (AppStore/GooglePlay)
-WEB|Redirect to a website, then play web games or submit a form.
-APK|Download an APK and install direct
-DDL|Redirect to a website to download app direct.
+| category | Description                                                    |
+|----------|----------------------------------------------------------------|
+| SDL      | The app that is listed publicly on store(AppStore/GooglePlay). |
+| WEB      | Redirect to a website, then play web games or submit a form.   |
+| APK      | Download an APK and install direct.                            |
+| DDL      | Redirect to a website to download app direct.                  |
 
 ### Tracking Link
-Parameter |Description
- -----| :----
-user_id| Identify the user who complete a task. The server callback can return this value when user complete a task
-imei  |The IMEI of user's device.If imei is mandatory in "mandatory_device"  parameter,publisher must pass it in  trackinglink.If not,imei will not appear in trackinglink.
-mac   |The Mac Address of user's device.If mac is mandatory in "mandatory_device"  parameter,publisher must pass it in trackinglink.If not,mac will not appear in trackinglink.
-androidid|The Android ID of user's device.If androidid is mandatory in "mandatory_device"  parameter,publisher must pass it in trackinglink.If not,android will not appear in trackinglink.
-advid  |The Google Advertising ID of user's device.If advid is mandatory in "mandatory_device"  parameter,publisher must pass it in trackinglink.If not,advid will not appear in trackinglink.
-idfa  |The IDFA on IOS of user's device.If idfa is mandatory in "mandatory_device"  parameter,publisher must pass it in trackinglink.If not,idfa will not appear in trackinglink.
-udid  |The udid of user's device.If udid is mandatory in "mandatory_device"  parameter,publisher must pass it in trackinglink.If not,idfa will not appear in trackinglink.
+
+| Parameter | Description                                                                                                                                                                            |
+|-----------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| user_id   | Identify the user who complete a task. The server callback can return this value when user complete a task.                                                                            |
+| imei      | The IMEI of user's device.If imei is mandatory in "mandatory_device"  parameter,publisher must pass it in  trackinglink.If not,imei will not appear in trackinglink.                   |
+| mac       | The Mac Address of user's device.If mac is mandatory in "mandatory_device"  parameter,publisher must pass it in trackinglink.If not,mac will not appear in trackinglink.               |
+| androidid | The Android ID of user's device.If androidid is mandatory in "mandatory_device"  parameter,publisher must pass it in trackinglink.If not,android will not appear in trackinglink.      |
+| advid     | The Google Advertising ID of user's device.If advid is mandatory in "mandatory_device"  parameter,publisher must pass it in trackinglink.If not,advid will not appear in trackinglink. |
+| idfa      | The IDFA on IOS of user's device.If idfa is mandatory in "mandatory_device"  parameter,publisher must pass it in trackinglink.If not,idfa will not appear in trackinglink.             |
+| udid      | The udid of user's device.If udid is mandatory in "mandatory_device"  parameter,publisher must pass it in trackinglink.If not,idfa will not appear in trackinglink.                    |
 
 #### Example
 
-
-[http://ad.api.yyapi.net/v1/tracking?ad=782801020756430848&app_id=4b84c1788615000d&pid=3&user_id={user_id}](http://ad.api.yyapi.net/v1/tracking?ad=782801020756430848&app_id=4b84c1788615000d&pid=3&user_id={user_id}) 
+[http://ad.api.yyapi.net/v1/tracking?ad=782801020756430848&app_id=4b84c1788615000d&pid=3&user_id={user_id}](http://ad.api.yyapi.net/v1/tracking?ad=782801020756430848&app_id=4b84c1788615000d&pid=3&user_id={user_id})
 
 
 ## Signature Algorithm
@@ -196,7 +196,7 @@ Formatting the non-binary type request parameters to key=value format. For examp
 #### For PHP
 
 ```php
-function signUrl($url, $app_secret) 
+function signUrl($url, $app_secret)
 {
     $sign = null;
     $params = array();
@@ -242,7 +242,7 @@ import java.security.GeneralSecurityException;
 public class AdxmiSign {
  /**
  * Signature Generation Algorithm
- * 
+ *
  * @param HashMap
  *            <String,String> params Request paramenters set, all parameters
  *            need to convert to string type before this
@@ -290,7 +290,7 @@ public static String getSignature(HashMap<String, String> params,
 /**
  * Calculate signature with a completed unsigned URL, append the signature
  * at the end of this URL.
- * 
+ *
  * @param String
  *            url The completed unsigned URL
  * @param String
@@ -342,36 +342,36 @@ def sign_url(url, app_secret):
 	query = url_parse.query
 	query_array = query.split('&')
 	for group in query_array:
-	    k, v = group.split('=')
-	    if k == 'sign':
-	        sign = v
-	    else:
-	        params[k] = unquote(v)
-	
+        k, v = group.split('=')
+        if k == 'sign':
+            sign = v
+        else:
+            params[k] = unquote(v)
+
 	str = ''
 	sorted_params = sorted(params.items(), key = lambda d:d[0])
 	for k, v in sorted_params:
-	    str += '%s=%s' % (k, v)
+        str += '%s=%s' % (k, v)
 	str += app_secret
-	
+
 	m = md5()
 	m.update(str)
 	sign = m.hexdigest()
-	
+
 	return '%s&sign=%s' % (url, sign)
 ```
 
 
 ## Common Error Response
 
-Key	| Description
- -----|:----
-{"c":-3003}	|missing required parameters
-{"c":-1002}	|app_id not exists
-{"c":-1202}	|app didn't pass the verification
-{"c":-1004}	|app not match device_type
-{"c":-1300}	|app_secret not match app_id
-{"c":-1403}	|Application didn't pass the verification or publisher didn't turn on the "Live" button for the application in "ADs Settings" - "Ad Units" of ADXMI Panel.
-{"c":-2103}	|offer not exists
-{"c":-2221}	|offer not running
-{"c":-2223}	|signature mismatch
+| Key         | Description                                                                                                                                               |
+|-------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------|
+| {"c":-3003} | missing required parameters                                                                                                                               |
+| {"c":-1002} | app_id not exists                                                                                                                                         |
+| {"c":-1202} | app didn't pass the verification                                                                                                                          |
+| {"c":-1004} | app not match device_type                                                                                                                                 |
+| {"c":-1300} | app_secret not match app_id                                                                                                                               |
+| {"c":-1403} | Application didn't pass the verification or publisher didn't turn on the "Live" button for the application in "ADs Settings" - "Ad Units" of ADXMI Panel. |
+| {"c":-2103} | offer not exists                                                                                                                                          |
+| {"c":-2221} | offer not running                                                                                                                                         |
+| {"c":-2223} | signature mismatch                                                                                                                                        |
