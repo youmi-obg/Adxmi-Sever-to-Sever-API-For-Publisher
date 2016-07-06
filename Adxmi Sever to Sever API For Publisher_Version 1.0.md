@@ -375,3 +375,4 @@ def sign_url(url, app_secret):
 | {"c":-2103} | offer not exists                                                                                                                                          |
 | {"c":-2221} | offer not running                                                                                                                                         |
 | {"c":-2223} | signature mismatch                                                                                                                                        |
+| {"c":-3212} | country mismatch                                                                                                                                          |
