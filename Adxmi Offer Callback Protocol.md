@@ -6,7 +6,35 @@
 *	All parameters will process urlencode.
 *	After setting callback url in [Developer Control Panel](https://www.adxmi.com/apps#/settings), Adxmi will allocate an individual secret key `callback_token` for signature using.
 
-###Callback Parameters
+###Supported Macros (New!!!)
+Your can add these macros to your callback url to receive the callback parameters you want. Please remember that Adxmi will automatically append a signature parameter `sign` to your callback url.
+
+| Macro       | Description                                                                                                                                                                                                                                             |
+|-------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| {order}     | The unique id of the order. If developer receives the same order ID, that means the order is already existed.                                                                                                                                           |
+| {app}       | Your application id                                                                                                                                                                                                                                     |
+| {ad}        | The name of the offer                                                                                                                                                                                                                                   |
+| {adid}      | The id of the offer                                                                                                                                                                                                                                     |
+| {revenue}   | The revenue($) that developer can earn                                                                                                                                                                                                                  |
+| {points}    | The currency points that users can earn                                                                                                                                                                                                                 |
+| {time}      | The time that Adxmi create this order                                                                                                                                                                                                                   |
+| {storeid}   | Id from application store                                                                                                                                                                                                                               |
+| {pkg}       | The package name of campaign app                                                                                                                                                                                                                        |
+| {ad_type}   | product enum: `wall, video, custom, api`                                                                                                                                                                                                                   |
+| {imei}      | IMEI                                                                                                                                                                                                                                                    |
+| {mac}       | MAC                                                                                                                                                                                                                                                     |
+| {androidid} | Android ID                                                                                                                                                                                                                                              |
+| {advid}     | Google Advertising ID                                                                                                                                                                                                                                   |
+| {idfa}      | IDFA                                                                                                                                                                                                                                                    |
+| {udid}      | UDID                                                                                                                                                                                                                                                    |
+| {user_id}   | Developers can set up their own `user_id` In Offers API, then user ID can be used to replace the CID identification which is offered by Adxmi. (Adxmi will generate an identification number for each device) Otherwise, Adxmi will use CID as user ID. |
+| {chn}       | Developers can set up their own `chn` In Offers API.                                                                                                                                                                                                    |
+| {ip}        | The ip of the user                                                                                                                                                                                                                                      |
+
+####Example
+    http://your_host/your_script?oid={order}&user={user_id}&ip={ip}
+
+###Default Callback Parameters
 | Key     | Value Description                                                                                                                                                                                                                                                |
 |---------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | order   | The unique id of the order. If developer receives the same order ID, that means the order is already existed.                                                                                                                                                    |
