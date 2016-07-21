@@ -35,6 +35,8 @@ Your can add these macros to your callback url to receive the callback parameter
     http://your_host/your_script?oid={order}&user={user_id}&ip={ip}
 
 ###Default Callback Parameters
+If your callback url does not contain any macro, we will append these parameters to it.
+
 | Key     | Value Description                                                                                                                                                                                                                                                |
 |---------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | order   | The unique id of the order. If developer receives the same order ID, that means the order is already existed.                                                                                                                                                    |
