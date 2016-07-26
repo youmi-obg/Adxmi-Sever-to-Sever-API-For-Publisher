@@ -7,19 +7,19 @@
 *	After setting callback url in [Developer Control Panel](https://www.adxmi.com/apps#/settings), Adxmi will allocate an individual secret key `callback_token` for signature using.
 
 ###Callback Parameters
-| Key     | Value Description                                                                                                                                                                                                                                                |
-|---------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| order   | The unique id of the order. If developer receives the same order ID, that means the order is already existed.                                                                                                                                                    |
-| app     | your application id                                                                                                                                                                                                                                              |
-| ad      | The name of the offer                                                                                                                                                                                                                                            |
-| adid    | The id of the offer                                                                                                                                                                                                                                              |
-| user    | User ID: Developers can set up their own `user_id` In Offers API, then user ID can be used to replace the CID identification which is offered by Adxmi. (Adxmi will generate an identification number for each device) Otherwise, Adxmi will use CID as user ID. |
-| revenue | The revenue($) that developer can earn                                                                                                                                                                                                                           |
-| points  | The currency points that users can earn                                                                                                                                                                                                                          |
-| time    | The time that Adxmi create this order                                                                                                                                                                                                                            |
-| storeid | Id from application store                                                                                                                                                                                                                                        |
-| pkg     | package name of campaign app                                                                                                                                                                                                                                     |
-| sign    | Parameters signature, used for verify the integrity of the above parameters, to prevent the third party to tamper with them.                                                                                                                                     |
+| Key     | Value Description                                                                                                            |
+|---------|------------------------------------------------------------------------------------------------------------------------------|
+| order   | The unique id of the order. If developer receives the same order ID, that means the order is already existed.                |
+| app     | your application id                                                                                                          |
+| ad      | The name of the offer                                                                                                        |
+| adid    | The id of the offer                                                                                                          |
+| user    | Developers can set up their own `user_id` In Offers API.                                                                     |
+| revenue | The revenue($) that developer can earn                                                                                       |
+| points  | The currency points that users can earn                                                                                      |
+| time    | The time that Adxmi create this order                                                                                        |
+| storeid | Id from application store                                                                                                    |
+| pkg     | package name of campaign app                                                                                                 |
+| sign    | Parameters signature, used for verify the integrity of the above parameters, to prevent the third party to tamper with them. |
 
 ###Signature Algorithm
 
