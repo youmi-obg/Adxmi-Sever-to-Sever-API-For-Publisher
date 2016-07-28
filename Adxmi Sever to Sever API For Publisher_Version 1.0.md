@@ -175,10 +175,11 @@ In order to use this api, publishers need to go to our official website (www.adx
 | advid     | The Google Advertising ID of user's device.If advid is mandatory in "mandatory_device"  parameter,publisher must pass it in trackinglink.If not,advid will not appear in trackinglink. |
 | idfa      | The IDFA on IOS of user's device.If idfa is mandatory in "mandatory_device"  parameter,publisher must pass it in trackinglink.If not,idfa will not appear in trackinglink.             |
 | udid      | The udid of user's device.If udid is mandatory in "mandatory_device"  parameter,publisher must pass it in trackinglink.If not,idfa will not appear in trackinglink.                    |
+| chn       | Identify the channel which completed a task.                                                                                                                                           |
 
 #### Example
 
-[http://ad.api.yyapi.net/v1/tracking?ad=782801020756430848&app_id=4b84c1788615000d&pid=3&user_id={user_id}](http://ad.api.yyapi.net/v1/tracking?ad=782801020756430848&app_id=4b84c1788615000d&pid=3&user_id={user_id})
+[http://ad.api.yyapi.net/v1/tracking?ad=782801020756430848&app_id=4b84c1788615000d&pid=3&user_id=abc123&chn=abc456](http://ad.api.yyapi.net/v1/tracking?ad=782801020756430848&app_id=4b84c1788615000d&pid=3&user_id=abc123&chn=abc456)
 
 
 ## Signature Algorithm
