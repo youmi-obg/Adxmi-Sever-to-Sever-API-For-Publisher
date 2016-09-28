@@ -171,7 +171,7 @@ In order to use this api, publishers need to go to our official website (www.adx
 | user_id   | Identify the user who complete a task. The server callback can return this value when user complete a task.                                                                            |
 | imei      | The IMEI of user's device.If imei is mandatory in "mandatory_device"  parameter,publisher must pass it in  trackinglink.If not,imei will not appear in trackinglink.                   |
 | mac       | The Mac Address of user's device.If mac is mandatory in "mandatory_device"  parameter,publisher must pass it in trackinglink.If not,mac will not appear in trackinglink.               |
-| androidid | The Android ID of user's device.If androidid is mandatory in "mandatory_device"  parameter,publisher must pass it in trackinglink.If not,android will not appear in trackinglink.      |
+| andid     | The Android ID of user's device.If androidid is mandatory in "mandatory_device"  parameter,publisher must pass it in trackinglink.If not,android will not appear in trackinglink.      |
 | advid     | The Google Advertising ID of user's device.If advid is mandatory in "mandatory_device"  parameter,publisher must pass it in trackinglink.If not,advid will not appear in trackinglink. |
 | idfa      | The IDFA on IOS of user's device.If idfa is mandatory in "mandatory_device"  parameter,publisher must pass it in trackinglink.If not,idfa will not appear in trackinglink.             |
 | udid      | The udid of user's device.If udid is mandatory in "mandatory_device"  parameter,publisher must pass it in trackinglink.If not,idfa will not appear in trackinglink.                    |
