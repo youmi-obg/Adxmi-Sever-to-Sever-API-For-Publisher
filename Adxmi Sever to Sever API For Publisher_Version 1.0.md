@@ -88,7 +88,7 @@ In order to use this api, publishers need to go to our official website (www.adx
             "store_label": [
                 "Tools"
             ],
-            "store_rating": "4.7",
+            "store_rating": 4.7,
             "os": "android",
             "task": "Install the application and play for a few minutes",
             "traffic": "non-incentive",
