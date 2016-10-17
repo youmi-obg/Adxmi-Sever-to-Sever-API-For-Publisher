@@ -27,7 +27,7 @@ In order to use this api, publishers need to go to our official website (www.adx
 | sign      | Signature for query parameters. See URL Signature Function for detail | string | Y         |
 | page_size | Define the number of offers per page                                  | int    | Y         |
 | page      | Define which page to fetch(start with 1)                              | int    | Y         |
-| os        | enum: `android`, `os`                                                 | string | N         |
+| os        | enum: `android`, `ios`                                                 | string | N         |
 
 #### Notice
 - page_size would like be less than 500 in case of request timeout.
