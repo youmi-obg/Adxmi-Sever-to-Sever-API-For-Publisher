@@ -27,7 +27,7 @@ In order to use this api, publishers need to go to our official website (www.adx
 | sign      | Signature for query parameters. See URL Signature Function for detail | string | Y         |
 | page_size | Define the number of offers per page                                  | int    | Y         |
 | page      | Define which page to fetch(start with 1)                              | int    | Y         |
-| os        | enum: `android`, `ios`                                                 | string | N         |
+| os        | enum: `android`, `ios`                                                | string | N         |
 
 #### Notice
 - page_size would like be less than 500 in case of request timeout.
@@ -46,7 +46,7 @@ In order to use this api, publishers need to go to our official website (www.adx
 | package          | The package name of the offer                                                                                       | string |
 | adtxt            | The introduction of the offer                                                                                       | string |
 | task             | The introduction of how to complete the offer                                                                       | string |
-| payout           | The revenue($) of the offer                                                                                         | string |
+| payout           | The revenue($) of the offer                                                                                         | double |
 | point            | The amount of virtual currency that will be earned for completing the offer(exchange rate is set on www.adxmi.com ) | int    |
 | cap              | The maximum conversion allowed of the offer                                                                         | int    |
 | trackinglink     | The link that is used to track conversion                                                                           | string |
