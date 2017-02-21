@@ -368,13 +368,15 @@ def sign_url(url, app_secret):
 
 | Key         | Description                                                                                                                                               |
 |-------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------|
-| {"c":-3003} | missing required parameters                                                                                                                               |
+
 | {"c":-1002} | app_id not exists                                                                                                                                         |
-| {"c":-1202} | app didn't pass the verification                                                                                                                          |
 | {"c":-1004} | app not match device_type                                                                                                                                 |
+| {"c":-1202} | app didn't pass the verification                                                                                                                          |
 | {"c":-1300} | app_secret not match app_id                                                                                                                               |
 | {"c":-1403} | Application didn't pass the verification or publisher didn't turn on the "Live" button for the application in "ADs Settings" - "Ad Units" of ADXMI Panel. |
 | {"c":-2103} | offer not exists                                                                                                                                          |
 | {"c":-2221} | offer not running                                                                                                                                         |
 | {"c":-2223} | signature mismatch                                                                                                                                        |
+| {"c":-3003} | missing required parameters                                                                                                                               |
+| {"c":-3006} | missing required device parameters                                                                                                                               |
 | {"c":-3212} | country mismatch                                                                                                                                          |
