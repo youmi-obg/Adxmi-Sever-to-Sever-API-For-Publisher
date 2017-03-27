@@ -255,38 +255,38 @@ public class AdxmiSign {
  * @throws IOException
  */
 public static String getSignature(HashMap<String, String> params,
-		String app_secret) throws IOException {
-	// Sort the parameters in ascending order
-	Map<String, String> sortedParams = new TreeMap<String, String>(params);
+        String app_secret) throws IOException {
+    // Sort the parameters in ascending order
+    Map<String, String> sortedParams = new TreeMap<String, String>(params);
 
-	Set<Map.Entry<String, String>> entrys = sortedParams.entrySet();
-	// Traverse the set after sorting, connect all the parameters as
-	// "key=value" format
-	StringBuilder basestring = new StringBuilder();
-	for (Map.Entry<String, String> param : entrys) {
-		basestring.append(param.getKey()).append("=")
-				.append(param.getValue());
-	}
-	basestring.append(app_secret);
-	// System.out.println(basestring.toString());
-	// Calculate signature using MD5
-	byte[] bytes = null;
-	try {
-		MessageDigest md5 = MessageDigest.getInstance("MD5");
-		bytes = md5.digest(basestring.toString().getBytes("UTF-8"));
-	} catch (GeneralSecurityException ex) {
-		throw new IOException(ex);
-	}
-	// Convert the MD5 output binary result to lowercase hexadecimal result.
-	StringBuilder sign = new StringBuilder();
-	for (int i = 0; i < bytes.length; i++) {
-		String hex = Integer.toHexString(bytes[i] & 0xFF);
-		if (hex.length() == 1) {
-			sign.append("0");
-		}
-		sign.append(hex);
-	}
-	return sign.toString();
+    Set<Map.Entry<String, String>> entrys = sortedParams.entrySet();
+    // Traverse the set after sorting, connect all the parameters as
+    // "key=value" format
+    StringBuilder basestring = new StringBuilder();
+    for (Map.Entry<String, String> param : entrys) {
+        basestring.append(param.getKey()).append("=")
+                .append(param.getValue());
+    }
+    basestring.append(app_secret);
+    // System.out.println(basestring.toString());
+    // Calculate signature using MD5
+    byte[] bytes = null;
+    try {
+        MessageDigest md5 = MessageDigest.getInstance("MD5");
+        bytes = md5.digest(basestring.toString().getBytes("UTF-8"));
+    } catch (GeneralSecurityException ex) {
+        throw new IOException(ex);
+    }
+    // Convert the MD5 output binary result to lowercase hexadecimal result.
+    StringBuilder sign = new StringBuilder();
+    for (int i = 0; i < bytes.length; i++) {
+        String hex = Integer.toHexString(bytes[i] & 0xFF);
+        if (hex.length() == 1) {
+            sign.append("0");
+        }
+        sign.append(hex);
+    }
+    return sign.toString();
 }
 
 /**
@@ -302,30 +302,30 @@ public static String getSignature(HashMap<String, String> params,
  *             , MalformedURLException
  */
 public static String getUrlSignature(String url, String app_secret)
-		throws IOException, MalformedURLException {
-	try {
-		URL urlObj = new URL(url);
-		String query = urlObj.getQuery();
-		String[] params = query.split("&");
-		Map<String, String> map = new HashMap<String, String>();
-		for (String each : params) {
-			String name = each.split("=")[0];
-			String value;
-			try {
-				value = URLDecoder.decode(each.split("=")[1], "UTF-8");
-			} catch (UnsupportedEncodingException e) {
-				value = "";
-			}
-			map.put(name, value);
-		}
-		String signature = getSignature((HashMap<String, String>) map,
-				app_secret);
-		return url + "&sign=" + signature;
-	} catch (MalformedURLException e) {
-		throw e;
-	} catch (IOException e) {
-		throw e;
-	}
+        throws IOException, MalformedURLException {
+    try {
+        URL urlObj = new URL(url);
+        String query = urlObj.getQuery();
+        String[] params = query.split("&");
+        Map<String, String> map = new HashMap<String, String>();
+        for (String each : params) {
+            String name = each.split("=")[0];
+            String value;
+            try {
+                value = URLDecoder.decode(each.split("=")[1], "UTF-8");
+            } catch (UnsupportedEncodingException e) {
+                value = "";
+            }
+            map.put(name, value);
+        }
+        String signature = getSignature((HashMap<String, String>) map,
+                app_secret);
+        return url + "&sign=" + signature;
+    } catch (MalformedURLException e) {
+        throw e;
+    } catch (IOException e) {
+        throw e;
+    }
   }
 }
 ```
@@ -338,29 +338,29 @@ from urllib import unquote
 from hashlib import md5
 
 def sign_url(url, app_secret):
-	sign = None
-	params = dict()
-	url_parse = urlparse(url)
-	query = url_parse.query
-	query_array = query.split('&')
-	for group in query_array:
+    sign = None
+    params = dict()
+    url_parse = urlparse(url)
+    query = url_parse.query
+    query_array = query.split('&')
+    for group in query_array:
         k, v = group.split('=')
         if k == 'sign':
             sign = v
         else:
             params[k] = unquote(v)
 
-	str = ''
-	sorted_params = sorted(params.items(), key = lambda d:d[0])
-	for k, v in sorted_params:
+    str = ''
+    sorted_params = sorted(params.items(), key = lambda d:d[0])
+    for k, v in sorted_params:
         str += '%s=%s' % (k, v)
-	str += app_secret
+    str += app_secret
 
-	m = md5()
-	m.update(str)
-	sign = m.hexdigest()
+    m = md5()
+    m.update(str)
+    sign = m.hexdigest()
 
-	return '%s&sign=%s' % (url, sign)
+    return '%s&sign=%s' % (url, sign)
 ```
 
 
