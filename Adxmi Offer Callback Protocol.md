@@ -1,12 +1,13 @@
-#Adxmi Offer Callback Protocol
-###Statement
+# Adxmi Offer Callback Protocol
+
+### Statement
 *	The uniform encoding of interface: UTF-8
 *	Once Adxmi gets the feedback data from advertisers, we will report back to developers' server immediately.
 *	It will need developers to offer an interface to receive data. The method for interface to receive data: GET.
 *	All parameters will process urlencode.
 *	After setting callback url in [Developer Control Panel](https://www.adxmi.com/apps#/settings), Adxmi will allocate an individual secret key `callback_token` for signature using.
 
-###Supported Macros (New!!!)
+### Supported Macros (New!!!)
 Your can add these macros to your callback url to receive the callback parameters you want. Please remember that Adxmi will automatically append a signature parameter `sign` to your callback url.
 
 | Macro       | Description                                                                                                                                                                                                                                             |
@@ -31,10 +32,10 @@ Your can add these macros to your callback url to receive the callback parameter
 | {chn}       | Developers can set up their own `chn` In Offers API.                                                                                                                                                                                                    |
 | {ip}        | The ip of the user                                                                                                                                                                                                                                      |
 
-####Example
+#### Example
     http://your_host/your_script?oid={order}&user={user_id}&ip={ip}
 
-###Default Callback Parameters
+### Default Callback Parameters
 If your callback url does not contain any macro, we will append these parameters to it.
 
 | Key     | Value Description                                                                                                                                                                                                                                                |
@@ -51,7 +52,7 @@ If your callback url does not contain any macro, we will append these parameters
 | pkg     | package name of campaign app                                                                                                                                                                                                                                     |
 | sign    | Parameters signature, used for verify the integrity of the above parameters, to prevent the third party to tamper with them.                                                                                                                                     |
 
-###Signature Algorithm
+### Signature Algorithm
 
 *	Use all parameters except `sign` in 【Callback Parameters】 list as key to compute MD5 value. Assume that the parameters participate in computing signature are k1,k2,k3, then the signature calculation method is below:
 
@@ -63,9 +64,9 @@ If your callback url does not contain any macro, we will append these parameters
 	*	In order to ensure the signature won't be abnormal when changing the callback parameters, please make sure using the verification function we offer as the verification method.
 	*	If developer's callback url contains parameters not mentioned above, these parameters will also join in the signature.
 
-###Verification Function
+### Verification Function
 
-#####For PHP
+##### For PHP
 
 ```php
 function verifySignature($callback_url, $callback_token){
@@ -100,7 +101,7 @@ function verifySignature($callback_url, $callback_token){
 ```
 
 
-#####For Java
+##### For Java
 
 ```java
 import java.io.IOException;
@@ -274,7 +275,7 @@ public class AdxmiSign {
 }
 
 ```
-#####For Python
+##### For Python
 
 ```python
 from urlparse import urlparse
@@ -309,7 +310,7 @@ def verifySinature(callback_url, callback_token):
 ```
 
 
-###Return Value
+### Return Value
 *	Adxmi will proceed the next operation according to the returning http status code from developers' server. The normal http status code should be 200 or 403.
 *	If the http status code is 200, that means developers already received and processed the message normally.
 *	If the http status code is 403, that means developers refuse this request, which also means middle-tier server will not repeatedly make request to developers' server.
