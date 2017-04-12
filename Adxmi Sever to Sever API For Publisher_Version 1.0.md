@@ -31,6 +31,7 @@ In order to use this api, publishers need to go to our official website (www.adx
 
 #### Notice
 - page_size would like be less than 500 in case of request timeout.
+- every 10 mins, at most 50 requests will be proceeded for every publisher. Once exceeded, you will get response code indicating exceed qps limit. 
 
 #### Example
 
@@ -379,3 +380,4 @@ def sign_url(url, app_secret):
 | {"c":-3003} | missing required parameters                                                                                                                               |
 | {"c":-3006} | missing required device parameters                                                                                                                               |
 | {"c":-3212} | country mismatch                                                                                                                                          |
+| {"c":-3302} | exceed qps limit                                                                                                                                          |
