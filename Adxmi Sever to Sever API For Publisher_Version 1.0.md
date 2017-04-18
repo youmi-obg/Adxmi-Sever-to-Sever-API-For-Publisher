@@ -73,7 +73,8 @@ In order to use this api, publishers need to go to our official website (www.adx
 #### Example
 
 ```javascript
-    {
+{
+    "c": 0,
     "offers": [
         {
             "id": "783709938932256768",
@@ -153,7 +154,7 @@ In order to use this api, publishers need to go to our official website (www.adx
     "total": 1,
     "page": 1,
     "page_size": 20,
-    "adn": 1
+    "n": 1
 }
 ```
 ### Offer Category
