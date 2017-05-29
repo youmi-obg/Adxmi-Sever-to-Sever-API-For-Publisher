@@ -178,7 +178,7 @@ In order to use this api, publishers need to go to our official website (www.adx
 | advid     | The Google Advertising ID of user's device.If advid is mandatory in "mandatory_device"  parameter,publisher must pass it in trackinglink.If not,advid will not appear in trackinglink. |
 | idfa      | The IDFA on IOS of user's device.If idfa is mandatory in "mandatory_device"  parameter,publisher must pass it in trackinglink.If not,idfa will not appear in trackinglink.             |
 | udid      | The udid of user's device.If udid is mandatory in "mandatory_device"  parameter,publisher must pass it in trackinglink.If not,idfa will not appear in trackinglink.                    |
-| chn       | Identify the channel which completed a task.                                                                                                                                           |
+| chn       | Identify the channel which completed a task.(less than 150 chars)                                                                                                                                           |
 
 #### Example
 
