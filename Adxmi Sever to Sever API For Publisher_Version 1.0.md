@@ -21,21 +21,20 @@ In order to use this api, publishers need to go to our official website (www.adx
 ### Request Parameter
 
 
-| Parameter | Description                                                           | Type   | Mandatory |
-|-----------|-----------------------------------------------------------------------|--------|-----------|
-| app_id    | Apply from www.adxmi.com for the application                          | string | Y         |
-| sign      | Signature for query parameters. See URL Signature Function for detail (Deprecated) | string | N         |
-| page_size | Define the number of offers per page                                  | int    | Y         |
-| page      | Define which page to fetch(start with 1)                              | int    | Y         |
-| os        | enum: `android`, `ios`                                                | string | N         |
+| Parameter | Description                                  | Type   | Mandatory |
+|-----------|----------------------------------------------|--------|-----------|
+| app_id    | Apply from www.adxmi.com for the application | string | Y         |
+| page_size | Define the number of offers per page         | int    | Y         |
+| page      | Define which page to fetch(start with 1)     | int    | Y         |
+| os        | enum: `android`, `ios`                       | string | N         |
 
 #### Notice
 - page_size would like be less than 500 in case of request timeout.
-- every 10 mins, at most 50 requests will be proceeded for every publisher. Once exceeded, you will get response code indicating exceed qps limit. 
+- every 10 mins, at most 50 requests will be proceeded for every publisher. Once exceeded, you will get response code indicating exceed qps limit.
 
 #### Example
 
->http://ad.api.yyapi.net/v1/offline?app_id=b3a3277b8fdd54bc&page=1&page_size=20&sign=73ef2b066eb1fa8d289246a65fc87639
+>http://ad.api.yyapi.net/v1/offline?app_id=b3a3277b8fdd54bc&page=1&page_size=20
 
 ## Response Field
 ### Response Parameter
@@ -184,188 +183,6 @@ In order to use this api, publishers need to go to our official website (www.adx
 
 [http://ad.api.yyapi.net/v1/tracking?ad=782801020756430848&app_id=4b84c1788615000d&pid=3&user_id=abc123&chn=abc456](http://ad.api.yyapi.net/v1/tracking?ad=782801020756430848&app_id=4b84c1788615000d&pid=3&user_id=abc123&chn=abc456)
 
-
-## Signature Algorithm
-
-Use all parameters except  `sign` in Requesting Parameters list as key to compute MD5 value. Assume that the parameters participate in computing signature are k1,k2,k3, then the signature calculation method is below:
-
-Formatting the non-binary type request parameters to key=value format. For example: k1=v1,k2=v2,k3=v3 Sort the key-value in alphabet ascending order and connepasct them together. For example: k1=v1k2=v2k3=v3 Append  `app_secret` after the connected key-value string. MD5 of the above string is the signature value.
-
-### Notice
-1. Don't include the sign(signature) parameters when calculating the signature.
-2. The parameters in signature procedure have not been processed by urlencode.
-
-### URL Signature Function
-
-#### For PHP
-
-```php
-function signUrl($url, $app_secret)
-{
-    $sign = null;
-    $params = array();
-    $url_parse = parse_url($url);
-    if (isset($url_parse['query'])) {
-        $query_arr = explode('&', $url_parse['query']);
-        if (!empty($query_arr)) {
-            foreach ($query_arr as $p) {
-                if (strpos($p, '=') !== false) {
-                    list($k, $v) = explode('=', $p);
-                    $params[$k] = urldecode($v);
-                }
-            }
-        }
-    }
-
-    $str = '';
-    ksort($params);
-    foreach ($params as $k => $v) {
-        $str .= "{$k}={$v}";
-    }
-    $str .= $app_secret;
-    $sign = md5($str);
-    return $url . "&sign={$sign}";
-}
-```
-
-#### For Java
-
-```java
-import java.io.IOException;
-import java.io.UnsupportedEncodingException;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.net.URLDecoder;
-import java.util.TreeMap;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Set;
-import java.security.MessageDigest;
-import java.security.GeneralSecurityException;
-
-public class AdxmiSign {
- /**
- * Signature Generation Algorithm
- *
- * @param HashMap
- *            <String,String> params Request paramenters set, all parameters
- *            need to convert to string type before this
- * @param String
- *            app_secret The secret key from Adxmi Developer Control Panel
- *            Setting
- * @return String
- * @throws IOException
- */
-public static String getSignature(HashMap<String, String> params,
-        String app_secret) throws IOException {
-    // Sort the parameters in ascending order
-    Map<String, String> sortedParams = new TreeMap<String, String>(params);
-
-    Set<Map.Entry<String, String>> entrys = sortedParams.entrySet();
-    // Traverse the set after sorting, connect all the parameters as
-    // "key=value" format
-    StringBuilder basestring = new StringBuilder();
-    for (Map.Entry<String, String> param : entrys) {
-        basestring.append(param.getKey()).append("=")
-                .append(param.getValue());
-    }
-    basestring.append(app_secret);
-    // System.out.println(basestring.toString());
-    // Calculate signature using MD5
-    byte[] bytes = null;
-    try {
-        MessageDigest md5 = MessageDigest.getInstance("MD5");
-        bytes = md5.digest(basestring.toString().getBytes("UTF-8"));
-    } catch (GeneralSecurityException ex) {
-        throw new IOException(ex);
-    }
-    // Convert the MD5 output binary result to lowercase hexadecimal result.
-    StringBuilder sign = new StringBuilder();
-    for (int i = 0; i < bytes.length; i++) {
-        String hex = Integer.toHexString(bytes[i] & 0xFF);
-        if (hex.length() == 1) {
-            sign.append("0");
-        }
-        sign.append(hex);
-    }
-    return sign.toString();
-}
-
-/**
- * Calculate signature with a completed unsigned URL, append the signature
- * at the end of this URL.
- *
- * @param String
- *            url The completed unsigned URL
- * @param String
- *            app_secret The secret key from Adxmi Developer Control Panel
- * @return String
- * @throws IOException
- *             , MalformedURLException
- */
-public static String getUrlSignature(String url, String app_secret)
-        throws IOException, MalformedURLException {
-    try {
-        URL urlObj = new URL(url);
-        String query = urlObj.getQuery();
-        String[] params = query.split("&");
-        Map<String, String> map = new HashMap<String, String>();
-        for (String each : params) {
-            String name = each.split("=")[0];
-            String value;
-            try {
-                value = URLDecoder.decode(each.split("=")[1], "UTF-8");
-            } catch (UnsupportedEncodingException e) {
-                value = "";
-            }
-            map.put(name, value);
-        }
-        String signature = getSignature((HashMap<String, String>) map,
-                app_secret);
-        return url + "&sign=" + signature;
-    } catch (MalformedURLException e) {
-        throw e;
-    } catch (IOException e) {
-        throw e;
-    }
-  }
-}
-```
-
-#### For Python
-
-```python
-from urlparse import urlparse
-from urllib import unquote
-from hashlib import md5
-
-def sign_url(url, app_secret):
-    sign = None
-    params = dict()
-    url_parse = urlparse(url)
-    query = url_parse.query
-    query_array = query.split('&')
-    for group in query_array:
-        k, v = group.split('=')
-        if k == 'sign':
-            sign = v
-        else:
-            params[k] = unquote(v)
-
-    str = ''
-    sorted_params = sorted(params.items(), key = lambda d:d[0])
-    for k, v in sorted_params:
-        str += '%s=%s' % (k, v)
-    str += app_secret
-
-    m = md5()
-    m.update(str)
-    sign = m.hexdigest()
-
-    return '%s&sign=%s' % (url, sign)
-```
-
-
 ## Common Error Response
 
 | Key         | Description                                                                                                                                               |
@@ -377,7 +194,6 @@ def sign_url(url, app_secret):
 | {"c":-1403} | Application didn't pass the verification or publisher didn't turn on the "Live" button for the application in "ADs Settings" - "Ad Units" of ADXMI Panel. |
 | {"c":-2103} | offer not exists                                                                                                                                          |
 | {"c":-2221} | offer not running                                                                                                                                         |
-| {"c":-2223} | signature mismatch                                                                                                                                        |
 | {"c":-3003} | missing required parameters                                                                                                                               |
 | {"c":-3006} | missing required device parameters                                                                                                                               |
 | {"c":-3212} | country mismatch                                                                                                                                          |
