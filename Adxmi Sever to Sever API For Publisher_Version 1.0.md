@@ -3,7 +3,7 @@
 
 
 
-## To get start
+## To Get Started
 #### Step1: Adxmi Publisher Account
 The API is supported only for partners who have Adxmi account. Please register on our website https://www.adxmi.com/account/signup before integrating Adxmi API.
 #### Step2: Adxmi Offer Access Parameter
@@ -11,7 +11,7 @@ Please create an app, get your app_id from app details. You will need to contact
 #### Step3:Requesting Adxmi Offers
 Publisher can request offers with approved app_id. Your app_id is the identification of your account, please keep it confidential, since that anyone can use it on behalf of you.
 
-## General instructions
+## General Instructions
 1. The API is only accessible by HTTP GET request and returns JSON.
 
 2. All the offers in your feed is active for you, but Adxmi will remove in-active offers from time to time, so please make sure to request every 15 min - 30 min.
