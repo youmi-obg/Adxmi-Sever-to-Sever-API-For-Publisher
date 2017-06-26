@@ -1,43 +1,48 @@
-# Adxmi Sever to Sever API For Publisher_Version 1.0
+# Adxmi Sever to Sever API For Publisher_Version 2.0
 ****
 
-## DESCRIPITIONS
-**Adxmi Sever to Sever Api** is a product that designs for our cooperators to get all information of Adxmi offers with a programmatic way.
-
-Here is the general principle of Adxmi Sever to Sever API
-
-1. The Api is only accessible by HTTP GET request and returns JSON.
-2. The Api is supported only for the publishing partners who have Adxmi account and approved app.
 
 
+## To get start
+#### Step1: Adxmi Publisher Account
+The API is supported only for partners who have Adxmi account. Please register on our website https://www.adxmi.com/account/signup before integrating Adxmi API.
+#### Step2: Adxmi Offer Access Parameter
+Please create an app, get your app_id from app details. You will need to contact your account manager to get your app approved to Adxmi API.
+#### Step3:Requesting Adxmi Offers
+Publisher can request offers with approved app_id. Your app_id is the identification of your account, please keep it confidential, since that anyone can use it on behalf of you.
 
-In order to use this api, publishers need to go to our official website (www.adxmi.com) to create an application and get the app_id and app_secret, which are used for Adxmi Api request.
+## General instructions
+1. The API is only accessible by HTTP GET request and returns JSON.
+
+2. All the offers in your feed is active for you, but Adxmi will remove in-active offers from time to time, so please make sure to request every 15 min - 30 min.
+
+3. At most 50 requests in 10 min will be proceeded for every publisher. Once exceeded, you will get response code indicating exceed qps limit.
+
 
 ## API Request
-### API Request url
+#### API Request url
 
 >  http://ad.api.yyapi.net/v1/offline
 
-### Request Parameter
+#### Request Parameter
 
 
-| Parameter | Description                                  | Type   | Mandatory |
-|-----------|----------------------------------------------|--------|-----------|
-| app_id    | Apply from www.adxmi.com for the application | string | Y         |
-| page_size | Define the number of offers per page         | int    | Y         |
-| page      | Define which page to fetch(start with 1)     | int    | Y         |
-| os        | enum: `android`, `ios`                       | string | N         |
+| Parameter |  Type   | Mandatory | Example |Description                                  |
+|-----------|--------|-----------|-----------|----------------------------------------------|
+| app_id    |  string | Y         | app_id=b3a3277b8fdd54bc       |   Applied from www.adxmi.com to access API. |
+| page_size | int    | Y         |  page_size=500        |Define the number of offers per page, page_size would be 500 in maxmium in case of request timeout.   |      
+| page      | int    | Y         |  page=1    |Define which page to fetch, starting with page 1.     |
+| os        |  string | N         | os=android       | Feild: android、ios. Both Android and iOS offers would be responsed if publisher don't set this parameter.          |
+| country        |  string | N         | country=US,CN,AU       | Used to get offers of specific countries.  All offers would be responsed if publisher don't set this parameter.          |
 
-#### Notice
-- page_size would like be less than 500 in case of request timeout.
-- every 10 mins, at most 50 requests will be proceeded for every publisher. Once exceeded, you will get response code indicating exceed qps limit.
 
-#### Example
 
->http://ad.api.yyapi.net/v1/offline?app_id=b3a3277b8fdd54bc&page=1&page_size=20
+##### Example
+
+>http://ad.api.yyapi.net/v1/offline?app_id=b3a3277b8fdd54bc&page=1&page_size=20&os=android
 
 ## Response Field
-### Response Parameter
+#### Response Parameter
 
 | Parameter        | Description                                                                                                         | Type   |
 |------------------|---------------------------------------------------------------------------------------------------------------------|--------|
@@ -47,12 +52,12 @@ In order to use this api, publishers need to go to our official website (www.adx
 | adtxt            | The introduction of the offer                                                                                       | string |
 | task             | The introduction of how to complete the offer                                                                       | string |
 | payout           | The revenue($) of the offer                                                                                         | double |
-| point            | The amount of virtual currency that will be earned for completing the offer(exchange rate is set on www.adxmi.com ) | int    |
-| cap              | The maximum conversion allowed of the offer                                                                         | int    |
+| point            | The amount of virtual currency that users would earn for incent offer(exchange rate is set on www.adxmi.com ) | int    |
+| `cap`             | `The maximum conversion allowed of the offer for all publishers` | int    |
 | trackinglink     | The link that is used to track conversion                                                                           | string |
-| countries        | The target countries of the offer(empty means global)                                                               | array  |
-| os               | The target operating system of the offer(`ios` or `android`)                                                        | string |
-| traffic          | The value is `incentive` or `non-incentive`                                                                         | string |
+| `countries`        | `The target countries of the offer(empty means global)`                                                               | array  |
+| `os`              | `The target operating system of the offer(ios or android)`                                                        | string |
+| `traffic`          | `The value is incentive or non-incentive`                                                                        | string |
 | os_version       | The min os version of the offer (eg:4.2.2)                                                                          | string |
 | carrier          | The target carrier of the offer                                                                                     | string |
 | device           | The target hardware brand of the offer                                                                              | string |
@@ -64,11 +69,13 @@ In order to use this api, publishers need to go to our official website (www.adx
 | store_label      | The store (AppStore/GooglePlay) label of the offer                                                                  | array  |
 | store_rating     | The store (AppStore/GooglePlay) rating of the offer                                                                 | string  |
 | size             | The size of the package                                                                                             | string |
-| mandatory_device | The mandatory device that offer needs to finish a conversion .`true` means mandatory                                | array  |
+| `mandatory_device` | `Publishers need to transmit these device parameters if it's marked as "true". `                              | array  |
 
-#### Notice
-- "cap" will be 0 if there is no limit.
-- "countries" will be an empty array if the offer is global.
+#### Notice!!!
+- "cap" will be 0 if there is no cap for it.
+- "countries" will be an empty array if the offer is targeting for global.
+- We suggest publishers transmit GAID/IDFA of all the users as most advertisors require it.
+- Clicks in the wrong country,missing mandatory device parameters, wrong trageting os_version, would be blocked by the server, so please make sure to target users that meet the requirements of our offers.
 
 #### Example
 
@@ -139,9 +146,9 @@ In order to use this api, publishers need to go to our official website (www.adx
             "mandatory_device": {
                 "imei": false,
                 "mac": false,
-                "andid": false,
-                "advid": false,
-                "idfa": false,
+                "andid": true,//this means publisher need to transmit android_id
+                "advid": true,//this means publisher need to transmit GAID
+                "idfa": false,// this means publisher can choose to transmit IDFA or not
                 "udid": false
             },
             "icon_url": "http://img.ymcdn.net/creative/1512/17/02c8a93f16e522a4-unnamed.jpg",
@@ -157,44 +164,35 @@ In order to use this api, publishers need to go to our official website (www.adx
     "n": 1
 }
 ```
-### Offer Category
 
-| category | Description                                                    |
-|----------|----------------------------------------------------------------|
-| SDL      | The app that is listed publicly on store(AppStore/GooglePlay). |
-| WEB      | Redirect to a website, then play web games or submit a form.   |
-| APK      | Download an APK and install direct.                            |
-| DDL      | Redirect to a website to download app direct.                  |
 
 ### Tracking Link
 
 | Parameter | Description                                                                                                                                                                            |
 |-----------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| user_id   | Identify the user who complete a task. The server callback can return this value when user complete a task.                                                                            |
-| imei      | The IMEI of user's device.If imei is mandatory in "mandatory_device"  parameter,publisher must pass it in  trackinglink.If not,imei will not appear in trackinglink.                   |
-| mac       | The Mac Address of user's device.If mac is mandatory in "mandatory_device"  parameter,publisher must pass it in trackinglink.If not,mac will not appear in trackinglink.               |
-| andid     | The Android ID of user's device.If androidid is mandatory in "mandatory_device"  parameter,publisher must pass it in trackinglink.If not,android will not appear in trackinglink.      |
-| advid     | The Google Advertising ID of user's device.If advid is mandatory in "mandatory_device"  parameter,publisher must pass it in trackinglink.If not,advid will not appear in trackinglink. |
-| idfa      | The IDFA on IOS of user's device.If idfa is mandatory in "mandatory_device"  parameter,publisher must pass it in trackinglink.If not,idfa will not appear in trackinglink.             |
-| udid      | The udid of user's device.If udid is mandatory in "mandatory_device"  parameter,publisher must pass it in trackinglink.If not,idfa will not appear in trackinglink.                    |
-| chn       | Identify the channel which completed a task.(less than 150 chars)                                                                                                                                           |
+| user_id   | For your  `click_id ` or  `transaction_id `                                                                |
+| chn       | For your `sub_source_id` or `placement_id`(less than 150 chars)                                                                                                                                           |
+| imei      | Publisher must transmit user's IMEI in trackinglink, if it's "true" in "mandatory_device"                |
+| mac       | Publisher must transmit user's MAC Address in trackinglink, if it's "true" in "mandatory_device"                              |
+| andid     | Publisher must transmit user's Android ID in trackinglink, if it's "true" in "mandatory_device"      |
+| advid     | Publisher must transmit user's Google Advertising ID(GAID) in trackinglink, if it's "true" in "mandatory_device"  |
+| idfa      | Publisher must transmit user's IDFA in trackinglink, if it's "true" in "mandatory_device"          |
+| udid      | Publisher must transmit user's UDID in trackinglink, if it's "true" in "mandatory_device"                    |
+
 
 #### Example
 
-[http://ad.api.yyapi.net/v1/tracking?ad=782801020756430848&app_id=4b84c1788615000d&pid=3&user_id=abc123&chn=abc456](http://ad.api.yyapi.net/v1/tracking?ad=782801020756430848&app_id=4b84c1788615000d&pid=3&user_id=abc123&chn=abc456)
+http://ad.api.yyapi.net/v1/tracking?ad=782801020756430848&app_id=4b84c1788615000d&pid=3&user_id=6lnp2meG4jrcC42o0xRKkF9u7jamDCur&chn=adxmi1
 
 ## Common Error Response
 
 | Key         | Description                                                                                                                                               |
 |-------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------|
-| {"c":-1002} | app_id not exists                                                                                                                                         |
-| {"c":-1004} | app not match device_type                                                                                                                                 |
-| {"c":-1202} | app didn't pass the verification                                                                                                                          |
-| {"c":-1300} | app_secret not match app_id                                                                                                                               |
+| {"c":-1002} | app_id not exists, please check your app_id.                                                                                                                                                                                                                                                                     |
+| {"c":-1202} | Application unapproved, please reach for your account manager.                                                                                                                                                                                                                                                       |
 | {"c":-1403} | Application didn't pass the verification or publisher didn't turn on the "Live" button for the application in "ADs Settings" - "Ad Units" of ADXMI Panel. |
-| {"c":-2103} | offer not exists                                                                                                                                          |
-| {"c":-2221} | offer not running                                                                                                                                         |
-| {"c":-3003} | missing required parameters                                                                                                                               |
-| {"c":-3006} | missing required device parameters                                                                                                                               |
-| {"c":-3212} | country mismatch                                                                                                                                          |
-| {"c":-3302} | exceed qps limit                                                                                                                                          |
+| {"c":-2103} | Wrong offer id, please check the offer id in your tracking link.                                                                                                                                          |
+| {"c":-2221} | Offer in-active, please switch for another offer.                                                                                                                                        |
+| {"c":-3006} | Missing required device parameters, please check the "mandatory_device" feild of the offer.                                                                                                                              |
+| {"c":-3212} | Country mismatch, please don't click in the wrong IP region.                                                                                                                                          |
+| {"c":-3302} | Exceed qps limit, at most 50 requests in 10min will be proceeded for every publisher.                                                                                                                                          |
