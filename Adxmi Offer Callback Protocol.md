@@ -10,29 +10,28 @@
 ## Supported Macros
 Publisher can add these macros to callback url. Please remember that Adxmi will automatically append a signature parameter `sign` to your callback url.
 
-| Macro       | Description                                                                                                                                                                                                                                             |
-|-------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-|
-|` {user_id} `  | Your `click_id ` or  `transaction_id `   |
-| `{chn}  `     | Your `sub_source_id` or `placement_id`(less than 150 chars) 
-| {order}     | The unique id of this transaction. If developer receives the same order, that means the transaction is already sent.                                                                                                                                           |
-| {app}       | Your application id                                                                                                                                                                                                                                     |
-| {ad}        | Offer name                                                                                                                                                                                                                                   |
-| {adid}      | Offer id                                                                                                                                                                                                                                    |
-| {revenue}   | The revenue($) that developer can get                                                                                                                                                                                                                  |
-| {points}    | The currency points that users can earn of incent offers                                                                                                                                                                                                                |
-| {time}      | The time that Adxmi get this transaction                                                                                                                                                                                                                   |
-| {storeid}   | Id from application store                                                                                                                                                                                                                               |
-| {pkg}       | The package name of this offer                                                                                                                                                                                                                       |
-| {ad_type}   | product enum: wall, video, custom, api                                                                                                                                                                                                                  |
-| {imei}      | IMEI                                                                                                                                                                                                                                                    |
-| {mac}       | MAC                                                                                                                                                                                                                                                     |
-| {androidid} | Android ID                                                                                                                                                                                                                                              |
-| {advid}     | Google Advertising ID                                                                                                                                                                                                                                   |
-| {idfa}      | IDFA                                                                                                                                                                                                                                                    |
-| {udid}      | UDID                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
-| {ip}        | The ip of the user                                                                                                                                                                                                                                      |
-| sign    | Parameters signature, used for verify the integrity of the above parameters, to prevent the third party to tamper with them.                                                                                                                                     |
+| Macro         | Description                                                                                                                  |
+|---------------|------------------------------------------------------------------------------------------------------------------------------|
+| ` {user_id} ` | Your `click_id ` or  `transaction_id `                                                                                       |
+| `{chn}  `     | Your `sub_source_id` or `placement_id`(less than 150 chars)                                                                  |
+| {order}       | The unique id of this transaction. If developer receives the same order, that means the transaction is already sent.         |
+| {app}         | Your application id                                                                                                          |
+| {ad}          | Offer name                                                                                                                   |
+| {adid}        | Offer id                                                                                                                     |
+| {revenue}     | The revenue($) that developer can get                                                                                        |
+| {points}      | The currency points that users can earn of incent offers                                                                     |
+| {time}        | The time that Adxmi get this transaction                                                                                     |
+| {storeid}     | Id from application store                                                                                                    |
+| {pkg}         | The package name of this offer                                                                                               |
+| {ad_type}     | product enum: wall, video, custom, api                                                                                       |
+| {imei}        | IMEI                                                                                                                         |
+| {mac}         | MAC                                                                                                                          |
+| {androidid}   | Android ID                                                                                                                   |
+| {advid}       | Google Advertising ID                                                                                                        |
+| {idfa}        | IDFA                                                                                                                         |
+| {udid}        | UDID                                                                                                                         |
+| {ip}          | The ip of the user                                                                                                           |
+| sign          | Parameters signature, used for verify the integrity of the above parameters, to prevent the third party to tamper with them. |
 #### Example
     http://your_host/your_script?click_id={user_id}&sub_source_id={chn}&ip={ip}
 
