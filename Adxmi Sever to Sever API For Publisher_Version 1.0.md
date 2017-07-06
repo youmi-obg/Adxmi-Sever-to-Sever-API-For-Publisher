@@ -1,4 +1,4 @@
-# Adxmi Sever to Sever API For Publisher_Version 2.0
+# Adxmi Sever to Sever API For Publisher_Version 1.0
 ****
 
 
@@ -30,7 +30,7 @@ Publisher can request offers with approved app_id. Your app_id is the identifica
 | Parameter |  Type   | Mandatory | Example |Description                                  |
 |-----------|--------|-----------|-----------|----------------------------------------------|
 | app_id    |  string | Y         | app_id=b3a3277b8fdd54bc       |   Applied from www.adxmi.com to access API. |
-| page_size | int    | Y         |  page_size=500        |Define the number of offers per page, page_size would be 500 in maxmium in case of request timeout.   |      
+| page_size | int    | Y         |  page_size=500        |Define the number of offers per page, page_size would be 500 in maxmium in case of request timeout.   |
 | page      | int    | Y         |  page=1    |Define which page to fetch, starting with page 1.     |
 | os        |  string | N         | os=android       | Feild: android、ios. Both Android and iOS offers would be responsed if publisher don't set this parameter.          |
 | country        |  string | N         | country=US,CN,AU       | Used to get offers of specific countries.  All offers would be responsed if publisher don't set this parameter.          |
