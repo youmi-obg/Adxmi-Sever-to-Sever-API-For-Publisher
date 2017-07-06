@@ -134,7 +134,6 @@ Publisher can request offers with approved app_id. Your app_id is the identifica
       },
       "icon_url": "https://lh3.googleusercontent.com/JErLykXFTGx8E88SwMzDE4m2jEFSXlrbEGrXm9rO-q5kkyJIXl9vvkzh9979NPNdDb0=w96",
       "adtxt": "SPACE MANAGER mobile application allows you to effortlessly back up and organize data on your mobile device. It will automatically upload your data on cloud when limit set by you get reached, freeing up your device&#39;s internal memory and improving your phone&#39;s performance.  Space Manager is a utility app that provides numerous features: - View and organize your data on: Internal memory, SdCard memory and Online memory (Cloud storage) - Up to 500 GB of online space to backup your images, videos and audios. - Get notified when internal phone storage is less than limit set in settings. - Manage content automatically by choosing size of images/videos/audios to copy or move to cloud, then Space Manager will automatically select your oldest data from your internal memory. - Run automatic free up space  Space Manager FREE version: - 2 GB of free online storage - All features provided by Space manager  Space Manager Premium: Subscribe once, and sit back and enjoy all FREE &amp; Premium features of Space Manage",
-      "category": "SDL",
       "package": "com.mobileartsme.spacemanager",
       "conversion_flow": "",
       "video": [
@@ -146,7 +145,7 @@ Publisher can request offers with approved app_id. Your app_id is the identifica
       "payout_type": "CPI",
       "subsource_blacklist": [],
       "subsource_whitelist": [],
-      "trackinglink": "http://t.api.yyapi.net/v1/tracking?ad=864378489573216256&app_id=b3a3277b8fdd54bc&pid=3&user_id={user_id}"
+      "trackinglink": "http://t.api.yyapi.net/v1/tracking?ad=864378489573216256&app_id=b3a3277b8fdd54bc&pid=3"
     }
   ]
 }
