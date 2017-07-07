@@ -31,6 +31,9 @@ Publisher can add these macros to callback url. Please remember that Adxmi will 
 | {idfa}        | IDFA                                                                                                                         |
 | {udid}        | UDID                                                                                                                         |
 | {ip}          | The ip of the user                                                                                                           |
+| {aff_sub1}    | Passed in tracking link                                                                                                      |
+| {aff_sub2}    | Passed in tracking link                                                                                                      |
+| {aff_sub3}    | Passed in tracking link                                                                                                      |
 | sign          | Parameters signature, used for verify the integrity of the above parameters, to prevent the third party to tamper with them. |
 #### Example
     http://your_host/your_script?click_id={user_id}&sub_source_id={chn}&ip={ip}
