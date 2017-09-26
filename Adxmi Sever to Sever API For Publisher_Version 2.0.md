@@ -137,10 +137,10 @@ Publisher can request offers with approved app_id. Your app_id is the identifica
       "package": "com.mobileartsme.spacemanager",
       "conversion_flow": "",
       "video": [
+        {
           "url": "https://xxx.mp4",
-          "mime": "video/mp4",
-          "width": 288,
-          "height": 512
+          "mime": "video/mp4"
+        }
       ],
       "payout_type": "CPI",
       "subsource_blacklist": [],
