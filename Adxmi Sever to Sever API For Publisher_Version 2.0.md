@@ -146,7 +146,8 @@ Publisher can request offers with approved app_id. Your app_id is the identifica
       "payout_type": "CPI",
       "subsource_blacklist": [],
       "subsource_whitelist": [],
-      "trackinglink": "http://t.api.yyapi.net/v1/tracking?ad=864378489573216256&app_id=b3a3277b8fdd54bc&pid=3"
+      "trackinglink": "http://t.api.yyapi.net/v1/tracking?ad=864378489573216256&app_id=b3a3277b8fdd54bc&pid=3",
+      "category": "APP"
     }
   ]
 }
