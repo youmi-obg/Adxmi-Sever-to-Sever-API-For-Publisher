@@ -166,6 +166,7 @@ Publisher can request offers with approved app_id. Your app_id is the identifica
 | advid     | Publisher must transmit user's Google Advertising ID(GAID) in trackinglink, if it's "true" in "mandatory_device"  |
 | idfa      | Publisher must transmit user's IDFA in trackinglink, if it's "true" in "mandatory_device"          |
 | udid      | Publisher must transmit user's UDID in trackinglink, if it's "true" in "mandatory_device"                    |
+| package   | Publiher should transmit the app name of the user in tracking link.                  |
 | aff_sub1   | For your custom parameter                  |
 | aff_sub2  | For your custom parameter                  |
 | aff_sub3  | For your custom parameter                  |
