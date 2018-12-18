@@ -1,16 +1,12 @@
 # Server To Server Offer API For Publisher
 
-- The API is only accessible by HTTP GET request and returns JSON.
-- All the offers in your feed is active for you, but we will remove in-active offers from time to time, so please make sure to request every 15 min - 30 min.
-- Excessive requests in short period would result in HTTP response with status 429, and provide back-off seconds in 'X-'
-
 Endpoint: http://ad.api.yyapi.net/v2/offline
 
 ## Request Parameter
 
 | Parameter   | Type   | Mandatory | Description       |
 |-------------|--------|-----------|-------------------------------------------------------------------------------------------------------------------|
-| app_id      | string | Y         | Retrieve from our publisher website              |
+| app_id      | string | Y         | Identification key, available from our publisher website              |
 | page_size   | int    | Y         | Define the number of offers per page, page_size would be 500 in maxmium in case of request timeout             |
 | page        | int    | Y         | Define which page to fetch, starting with page 1      |
 | os          | array  | N         | Filter offer by target os|
@@ -27,7 +23,7 @@ Endpoint: http://ad.api.yyapi.net/v2/offline
 | adtxt               | string | The introduction of the offer         |
 | payout              | double | The payout (in USD) of the offer, 0 if dynamic payout |
 | cap                 | int    | Maximum allowed conversion, 0 if open cap                |
-| trackinglink        | string | The link that is used to track conversion                |
+| trackinglink        | string | The tracking link of the offer |
 | country             | array  | Target country, empty means global |
 | os                  | array  | Target os: android / ios        |
 | traffic             | string | incentive or non-incentive        |
@@ -40,7 +36,7 @@ Endpoint: http://ad.api.yyapi.net/v2/offline
 | store_label         | array  | The store (AppStore/GooglePlay) label of the offer       |
 | store_rating        | string | The store (AppStore/GooglePlay) rating of the offer      |
 | size                | string | The size of the package               |
-| conversion_flow     | string | Publisher can get a convertion only if a user completing this convertion flow.|
+| conversion_flow     | string | Publisher can get a conversion only if the user complete this conversion flow.|
 | payout_type         | string | CPI: This means the offer is from an app store.<br> CPA: This means user will be redirected to a web task         |
 | mandatory_device    | map<string, bool>  | required device parameters if it's marked as "true", see tracking link macro for details, failing to pass required parameters would result in invalid click response |
 | category            | string | The category of the offer: APP / ADULT / SMARTLINK / SUBSCRIPTION |
@@ -104,6 +100,13 @@ GET http://ad.api.yyapi.net/v2/offline?app_id=b3a3277b8fdd54bc&page=1&page_size=
     }
   ]
 }
+```
+
+## Notes
+
+- The API is only accessible by HTTP GET request and returns JSON.
+- We ensure all the offer you get is alive at the time of you request, but we might offline offers at any time, so please make sure to request every 15 min - 30 min, and any disappeared offers shoul be deemed unavailable to you.
+- Excessive requests in short period might 429 (Too Many Requests) response, retry seconds is provided in 'Retry-After' response header.
 
 ## Tracking link macro
 
