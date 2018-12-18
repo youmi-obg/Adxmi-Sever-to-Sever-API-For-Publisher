@@ -170,20 +170,3 @@ Publisher can request offers with approved app_id. Your app_id is the identifica
 | aff_sub1   | For your custom parameter                  |
 | aff_sub2  | For your custom parameter                  |
 | aff_sub3  | For your custom parameter                  |
-
-#### Example
-
-http://ad.api.yyapi.net/v1/tracking?ad=782801020756430848&app_id=4b84c1788615000d&pid=3&user_id=6lnp2meG4jrcC42o0xRKkF9u7jamDCur&chn=subsource1
-
-## Common Error Response
-
-| Key         | Description                                                                                                                                               |
-|-------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------|
-| {"c":-1002} | app_id not exists, please check your app_id.                                                                                                                                                                                                                                                                     |
-| {"c":-1202} | Application unapproved, please reach for your account manager.                                                                                                                                                                                                                                                       |
-| {"c":-1403} | Application didn't pass the verification or publisher didn't turn on the "Live" button for the application in "ADs Settings" - "Ad Units" of ADXMI Panel. |
-| {"c":-2103} | Wrong offer id, please check the offer id in your tracking link.                                                                                                                                          |
-| {"c":-2221} | Offer in-active, please switch for another offer.                                                                                                                                        |
-| {"c":-3006} | Missing required device parameters, please check the "mandatory_device" feild of the offer.                                                                                                                              |
-| {"c":-3212} | Country mismatch, please don't click in the wrong IP region.                                                                                                                                          |
-| {"c":-3302} | Exceed qps limit, at most 50 requests in 10min will be proceeded for every publisher.                                                                                                                                          |
