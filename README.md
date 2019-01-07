@@ -21,7 +21,7 @@ Endpoint: http://ad.api.yyapi.net/v2/offline
 | name                | string | The name of the offer                 |
 | package             | string | The package name of the offer         |
 | adtxt               | string | The introduction of the offer         |
-| payout              | double | The payout (in USD) of the offer, 0 if dynamic payout |
+| payout              | double | The payout (in USD) of the offer, 0 if dynamic payout. Not necessarily the settled payout, we recommend to add `{revenue}` macro in you postback link (see below) |
 | cap                 | int    | Maximum allowed conversion, 0 if open cap                |
 | trackinglink        | string | The tracking link of the offer |
 | country             | array  | Target country, empty means global |
@@ -146,7 +146,7 @@ Multiple callbacks related to the same conversion is possible, so it's receiver'
 | {order_id}    | The unique id of this transactionIf developer receives the same order, that means the transaction is already sent.|
 | {ad}          | Offer ID|
 | {package}     | The package name of this offer|
-| {revenue}     | The revenue($) that developer can get|
+| {revenue}     | The settled price (in USD) for this conversion |
 | {aff_sub1}    | Passed in tracking link|
 | {aff_sub2}    | Passed in tracking link|
 | {aff_sub3}    | Passed in tracking link|
