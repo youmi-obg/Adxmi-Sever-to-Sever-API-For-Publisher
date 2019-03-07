@@ -22,7 +22,7 @@ Endpoint: http://ad.api.yyapi.net/v2/offline
 | package             | string | The package name of the offer         |
 | adtxt               | string | The introduction of the offer         |
 | payout              | double | The payout (in USD) of the offer, 0 if dynamic payout. Not necessarily the settled payout, we recommend to add `{revenue}` macro in you postback link (see below) |
-| cap                 | int    | Maximum allowed conversion, 0 if open cap                |
+| cap                 | int    | Maximum allowed total conversion per day, 0 if open cap                |
 | trackinglink        | string | The tracking link of the offer |
 | country             | array  | Target country, empty means global |
 | os                  | array  | Target os: android / ios        |
