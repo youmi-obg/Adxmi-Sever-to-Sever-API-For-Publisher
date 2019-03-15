@@ -107,8 +107,8 @@ GET http://ad.api.yyapi.net/v2/offline?app_id=b3a3277b8fdd54bc&page=1&page_size=
 ## Notes
 
 - The API is only accessible by HTTP GET request and returns JSON.
-- We ensure all the offer you get is alive at the time of you request, but we might offline offers at any time, so please make sure to request every 15 min - 30 min, and any disappeared offers shoul be deemed unavailable to you.
-- Excessive requests in short period might 429 (Too Many Requests) response, retry seconds is provided in 'Retry-After' response header.
+- We ensure all the offer you get is alive at the time of you request, but we might offline offers at any time, so please make sure to request every 15 min - 30 min, and disappeared offers should be deemed unaccessable to you.
+- Excessive requests in short period might result in 429 (Too Many Requests) http response code, retry seconds is provided in 'Retry-After' response header.
 
 ## Tracking link macro
 
