@@ -20,6 +20,7 @@ Endpoint: http://ad.api.yyapi.net/v2/offline
 | id                  | string | The id of the offer|
 | name                | string | The name of the offer                 |
 | package             | string | The package name of the offer         |
+| kpi                 | string | The KPI description of the offer      |
 | adtxt               | string | The introduction of the offer         |
 | payout              | double | The payout (in USD) of the offer, 0 if dynamic payout. Not necessarily the settled payout, we recommend to add `{revenue}` macro in you postback link (see below) |
 | cap                 | int    | Maximum allowed total conversion per day, 0 if open cap                |
@@ -57,6 +58,7 @@ GET http://ad.api.yyapi.net/v2/offline?app_id=b3a3277b8fdd54bc&page=1&page_size=
       "id": "864378489573216256",
       "name": "Space Manager",
       "package": "com.mobileartsme.spacemanager",
+      "kpi": "hard: CTIT less than 20 seconds will not be paid",
       "adtxt": "SPACE MANAGER mobile application allows you to effortlessly back up and organize data on your mobile deviceIt will automatically upload your data on cloud when limit set by you get reached, freeing up your device&#39;s internal memory and improving your phone&#39;s performance Space Manager is a utility app that provides numerous features: - View and organize your data on: Internal memory, SdCard memory and Online memory (Cloud storage) - Up to 500 GB of online space to backup your images, videos and audios- Get notified when internal phone storage is less than limit set in settings- Manage content automatically by choosing size of images/videos/audios to copy or move to cloud, then Space Manager will automatically select your oldest data from your internal memory- Run automatic free up space  Space Manager FREE version: - 2 GB of free online storage - All features provided by Space manager  Space Manager Premium: Subscribe once, and sit back and enjoy all FREE &amp; Premium features of Space Manage",
       "payout": 1.12,
       "cap": 0,
