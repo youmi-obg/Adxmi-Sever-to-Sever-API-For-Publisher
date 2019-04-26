@@ -8,10 +8,10 @@ Endpoint: http://ad.api.yyapi.net/v2/offline
 |-------------|--------|-----------|-------------------------------------------------------------------------------------------------------------------|
 | app_id      | string | Y         | Identification key, available from our publisher website              |
 | page_size   | int    | N | Define the number of offers per page, page_size should be no greater than 10000 in case of request timeout             |
-| page        | int    | N | Define which page to fetch      |
-| payout_type | string  | N         | (CPA / CPI) Filter offer payout_type|
+| page        | int    | N | Define which page to fetch, starting from 1      |
+| payout_type | string  | N         | Filter offer payout_type: CPA / CPI |
+| os          | string  | N         | Filter offer by target OS: android / ios |
 | country     | string  | N         | Filter offer by target country, use `,` to separate multiple countries |
-| os          | string  | N         | (android / ios) Filter offer by target OS |
 
 ## Response Parameter
 
