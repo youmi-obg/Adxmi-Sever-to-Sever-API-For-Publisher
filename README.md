@@ -45,7 +45,7 @@ Endpoint: http://ad.api.yyapi.net/v2/offline
 ## Example
 
 ```
-GET http://ad.api.yyapi.net/v2/offline?app_id=b3a3277b8fdd54bc&page=1&page_size=20&os=android&country=US
+GET http://ad.api.yyapi.net/v2/offline?app_id=c46b362886e42385d30c83d76abc3c51&page=1&page_size=20&os=android&country=IN&payout_type=CPI
 
 {
   "c": 0,
