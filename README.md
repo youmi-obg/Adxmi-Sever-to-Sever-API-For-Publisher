@@ -7,11 +7,11 @@ Endpoint: http://ad.api.yyapi.net/v2/offline
 | Parameter   | Type   | Mandatory | Description       |
 |-------------|--------|-----------|-------------------------------------------------------------------------------------------------------------------|
 | app_id      | string | Y         | Identification key, available from our publisher website              |
-| page_size   | int    | N (default 100)         | Define the number of offers per page, page_size should be no greater than 10000 in case of request timeout             |
-| page        | int    | N (default 1)        | Define which page to fetch      |
-| os          | array  | N         | Filter offer by target os|
-| country     | array  | N         | Filter offer by target country|
-| payout_type | array  | N         | Filter offer payout_type|
+| page_size   | int    | N | Define the number of offers per page, page_size should be no greater than 10000 in case of request timeout             |
+| page        | int    | N | Define which page to fetch      |
+| payout_type | string  | N         | (CPA / CPI) Filter offer payout_type|
+| country     | string  | N         | Filter offer by target country, use `,` to separate multiple countries |
+| os          | string  | N         | (android / ios) Filter offer by target OS |
 
 ## Response Parameter
 
