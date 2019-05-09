@@ -110,7 +110,7 @@ GET http://ad.api.yyapi.net/v2/offline?app_id=c46b362886e42385d30c83d76abc3c51&p
 - We ensure all the offer you get is alive at the time of you request, but we might offline offers at any time. To minimize invalid clicks on offline offers, we advise you to request every 15 min - 30 min, and disappeared offers should be deemed unaccessable to you.
 - Excessive requests in short period might result in 429 (Too Many Requests) http response code, retry seconds is provided in 'Retry-After' response header.
 
-## Tracking link macro
+## Tracking link parameter
 
 | Parameter | Description |
 |-----------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -132,7 +132,7 @@ GET http://ad.api.yyapi.net/v2/offline?app_id=c46b362886e42385d30c83d76abc3c51&p
 - Failing to provide required device parameters would result in invalid click. It is advertised to pass device parameters whenever possible, since the info will better identify the origin of the click, and lead to better conversion ratio.
 - Lengthy parameters would be truncated on our side, so please respect the maximum length requirement.
 
-# Offer Callback Protocol
+# Conversion Callback Protocol
 
 Normally we send callback immediately when conversion happens.
 However, on rare scenarios like server failure, delayed conversion confirm, etc., delayed callbacks (up to 7 days) are expected.
