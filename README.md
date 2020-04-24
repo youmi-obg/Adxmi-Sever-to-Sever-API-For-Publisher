@@ -40,7 +40,8 @@ Endpoint: http://ad.api.yyapi.net/v2/offline
 | conversion_flow     | string | Publisher can get a conversion only if the user complete this conversion flow.|
 | payout_type         | string | CPI: This means the offer is from an app store.<br> CPA: This means user will be redirected to a web task.<br> CPL: This means the offer is paid for an explicit sign-up         |
 | mandatory_device    | map<string, bool>  | required device parameters if it's marked as "true", see tracking link macro for details, failing to pass required parameters would result in invalid click response |
-| category            | string | The category of the offer: APP / ADULT / SMARTLINK / SUBSCRIPTION |
+| stream_type            | string | The stream type of offer: APP / ADULT / SMARTLINK / SUBSCRIPTION |
+| category            | string | Advertising classification of Youmi, similar to Google Play |
 
 ## Example
 
