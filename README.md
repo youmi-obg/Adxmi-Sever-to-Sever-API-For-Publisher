@@ -12,8 +12,7 @@ Endpoint: http://ad.api.yyapi.net/v2/offline
 | payout_type | string  | N         | Filter offer payout_type: CPA / CPI / CPL |
 | os          | string  | N         | Filter offer by target OS: android / ios |
 | country     | string  | N         | Filter offer by target country, use `,` to separate multiple countries |
-| offer_ids     | string  | N         | Filter offer by target offers, use , to separate multiple offers
- |
+| offer_ids     | string  | N         | Filter offer by target offers, use , to separate multiple offers |
 
 ## Response Parameter
 
