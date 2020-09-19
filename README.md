@@ -128,6 +128,9 @@ GET http://ad.api.yyapi.net/v2/offline?app_id=c46b362886e42385d30c83d76abc3c51&p
 | aff_sub1  | For your custom parameter (maximum 256)                  |
 | aff_sub2  | For your custom parameter (maximum 256)                  |
 | aff_sub3  | For your custom parameter (maximum 256)                  |
+| ua        | Provide the language and locale;Example,en-US                  |
+| language  | Do not extra the CFNetwork user-agent,extract the other one(URL encoded)                  |
+| ip        | ip of the user                  |
 
 ### Notes
 
