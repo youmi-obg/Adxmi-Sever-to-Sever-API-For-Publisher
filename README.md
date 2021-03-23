@@ -116,7 +116,6 @@ GET http://ad.api.yyapi.net/v2/offline?app_id=c46b362886e42385d30c83d76abc3c51&p
 
 | Parameter | Description |
 |-----------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| user_id   | For your click_id or transaction_id, to uniquely identify a single click |
 | chn       | For your sub_source_id or placement_id (maximum 150) |
 | imei      | user's IMEI, mandatory if "true" in "mandatory_device"                |
 | mac       | user's MAC Address, mandatory if "true" in "mandatory_device"           |
@@ -125,7 +124,7 @@ GET http://ad.api.yyapi.net/v2/offline?app_id=c46b362886e42385d30c83d76abc3c51&p
 | idfa      | user's IDFA, mandatory if "true" in "mandatory_device"          |
 | udid      | user's UDID, mandatory if "true" in "mandatory_device"  |
 | package   | package name of the app originating the click            |
-| aff_sub1  | For your custom parameter (maximum 256)                  |
+| aff_sub  | For your click_id or transaction_id, to uniquely identify a single click(maximum 256)                  |
 | aff_sub2  | For your custom parameter (maximum 256)                  |
 | aff_sub3  | For your custom parameter (maximum 256)                  |
 | ua        | Provide the language and locale;Example,en-US                  |
@@ -148,13 +147,12 @@ Multiple callbacks related to the same conversion is possible, so it's receiver'
 
 | Macro         | Description|
 |---------------|------------------------------------------------------------------------------------------------------------------------------|
-| {user_id}     | Your click_id  or  transaction_id |
 | {chn}         | Your sub_source_id or placement_id|
 | {order_id}    | The unique id of this transaction. If developer receives the same order, that means the transaction is already sent.|
 | {ad}          | Offer ID|
 | {package}     | The package name of this offer|
 | {revenue}     | The settled price (in USD) for this conversion |
-| {aff_sub1}    | Passed in tracking link|
+| {aff_sub}    | Your click_id or transaction_id|
 | {aff_sub2}    | Passed in tracking link|
 | {aff_sub3}    | Passed in tracking link|
 
