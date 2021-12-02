@@ -148,8 +148,7 @@ Multiple callbacks related to the same conversion is possible, so it's receiver'
 | Macro         | Description|
 |---------------|------------------------------------------------------------------------------------------------------------------------------|
 | {chn}         | Your sub_source_id or placement_id|
-| {order_id}    | The unique id of this transaction. If developer receives the same order, that means the transaction is already sent.|
-| {ad}          | Offer ID|
+| {oid}        | Offer ID|
 | {package}     | The package name of this offer|
 | {revenue}     | The settled price (in USD) for this conversion |
 | {aff_sub}    | Your click_id or transaction_id|
