@@ -43,66 +43,77 @@ Endpoint: http://ad.api.yyapi.net/v2/offline
 | mandatory_device    | map<string, bool>  | required device parameters if it's marked as "true", see tracking link macro for details, failing to pass required parameters would result in invalid click response |
 | stream_type            | string | The stream type of offer: APP / ADULT / SMARTLINK / SUBSCRIPTION |
 | category            | string | Advertising classification of Youmi, similar to Google Play |
-| task_description_for_user            | string | Task Description for user |
+| task_description_for_user            | string | Task description for user |
 ## Example
 
 ```
 GET http://ad.api.yyapi.net/v2/offline?app_id=c46b362886e42385d30c83d76abc3c51&page=1&page_size=20&os=android&country=IN&payout_type=CPI
 
 {
-  "c": 0,
-  "total": 1,
-  "page": 1,
-  "page_size": 1,
-  "n": 1,
-  "offers": [
-    {
-      "id": "864378489573216256",
-      "name": "Space Manager",
-      "package": "com.mobileartsme.spacemanager",
-      "kpi": "hard: CTIT less than 20 seconds will not be paid",
-      "adtxt": "SPACE MANAGER mobile application allows you to effortlessly back up and organize data on your mobile deviceIt will automatically upload your data on cloud when limit set by you get reached, freeing up your device&#39;s internal memory and improving your phone&#39;s performance Space Manager is a utility app that provides numerous features: - View and organize your data on: Internal memory, SdCard memory and Online memory (Cloud storage) - Up to 500 GB of online space to backup your images, videos and audios- Get notified when internal phone storage is less than limit set in settings- Manage content automatically by choosing size of images/videos/audios to copy or move to cloud, then Space Manager will automatically select your oldest data from your internal memory- Run automatic free up space  Space Manager FREE version: - 2 GB of free online storage - All features provided by Space manager  Space Manager Premium: Subscribe once, and sit back and enjoy all FREE &amp; Premium features of Space Manage",
-      "payout": 1.12,
-      "cap": 0,
-      "trackinglink": "http://t.api.yyapi.net/v1/tracking?ad=864378489573216256&app_id=b3a3277b8fdd54bc&pid=3",
-      "country": ["AE","BH","QA"],
-      "os": ["android"],
-      "traffic": "incentive",
-      "os_version": "",
-      "carrier": [],
-      "device": [],
-      "preview_url": "https://play.google.com/store/apps/details?id=com.mobileartsme.spacemanager",
-      "icon_url": "https://lh3.googleusercontent.com/JErLykXFTGx8E88SwMzDE4m2jEFSXlrbEGrXm9rO-q5kkyJIXl9vvkzh9979NPNdDb0=w96",
-      "creative": [
+    "c": 0,
+    "total": 1,
+    "page": 1,
+    "page_size": 1,
+    "n": 1,
+    "offers": [
         {
-          "url": "https://lh3.googleusercontent.com/KyqDq7p4f_bKV5gJVpgayLVAXW8GXznwDYEpfVfI4nhHcf-nfwIl3WFXXnDcxk0kOKw",
-          "mime": "image/png",
-          "width": 288,
-          "height": 512
+            "id": "864378489573216256",
+            "name": "Space Manager",
+            "package": "com.mobileartsme.spacemanager",
+            "kpi": "hard: CTIT less than 20 seconds will not be paid",
+            "adtxt": "SPACE MANAGER mobile application allows you to effortlessly back up and organize data on your mobile deviceIt will automatically upload your data on cloud when limit set by you get reached, freeing up your device&#39;s internal memory and improving your phone&#39;s performance Space Manager is a utility app that provides numerous features: - View and organize your data on: Internal memory, SdCard memory and Online memory (Cloud storage) - Up to 500 GB of online space to backup your images, videos and audios- Get notified when internal phone storage is less than limit set in settings- Manage content automatically by choosing size of images/videos/audios to copy or move to cloud, then Space Manager will automatically select your oldest data from your internal memory- Run automatic free up space  Space Manager FREE version: - 2 GB of free online storage - All features provided by Space manager  Space Manager Premium: Subscribe once, and sit back and enjoy all FREE &amp; Premium features of Space Manage",
+            "payout": 1.12,
+            "cap": 0,
+            "trackinglink": "http://t.api.yyapi.net/v1/tracking?ad=864378489573216256&app_id=b3a3277b8fdd54bc&pid=3",
+            "country": [
+                "AE",
+                "BH",
+                "QA"
+            ],
+            "os": [
+                "android"
+            ],
+            "traffic": "incentive",
+            "os_version": "",
+            "carrier": [],
+            "device": [],
+            "preview_url": "https://play.google.com/store/apps/details?id=com.mobileartsme.spacemanager",
+            "icon_url": "https://lh3.googleusercontent.com/JErLykXFTGx8E88SwMzDE4m2jEFSXlrbEGrXm9rO-q5kkyJIXl9vvkzh9979NPNdDb0=w96",
+            "creative": [
+                {
+                    "url": "https://lh3.googleusercontent.com/KyqDq7p4f_bKV5gJVpgayLVAXW8GXznwDYEpfVfI4nhHcf-nfwIl3WFXXnDcxk0kOKw",
+                    "mime": "image/png",
+                    "width": 288,
+                    "height": 512
+                }
+            ],
+            "video": [
+                {
+                    "url": "https://xxx.mp4",
+                    "mime": "video/mp4"
+                }
+            ],
+            "store_label": [
+                "Tools"
+            ],
+            "store_rating": "4.2",
+            "size": "16M",
+            "conversion_flow": "",
+            "payout_type": "CPI",
+            "mandatory_device": {
+                "imei": false,
+                "mac": false,
+                "andid": true,
+                "advid": false,
+                "idfa": false,
+                "udid": false
+            },
+            "category": "APP",
+            "task_description_for_user": {
+                "en": "1. Download and Install App\n2. Create an account\n3. Open the App and play 15s at least"
+            }
         }
-      ],
-      "video": [
-        {
-          "url": "https://xxx.mp4",
-          "mime": "video/mp4"
-        }
-      ],
-      "store_label": ["Tools"],
-      "store_rating": "4.2",
-      "size": "16M",
-      "conversion_flow": "",
-      "payout_type": "CPI",
-      "mandatory_device": {
-        "imei": false,
-        "mac": false,
-        "andid": true,
-        "advid": false,
-        "idfa": false,
-        "udid": false
-      },
-      "category": "APP"
-    }
-  ]
+    ]
 }
 ```
 
