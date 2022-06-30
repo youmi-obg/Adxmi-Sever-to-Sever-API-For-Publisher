@@ -43,7 +43,7 @@ Endpoint: http://ad.api.yyapi.net/v2/offline
 | mandatory_device    | map<string, bool>  | required device parameters if it's marked as "true", see tracking link macro for details, failing to pass required parameters would result in invalid click response |
 | stream_type            | string | The stream type of offer: APP / ADULT / SMARTLINK / SUBSCRIPTION |
 | category            | string | Advertising classification of Youmi, similar to Google Play |
-
+| task_description_for_user            | string | Task Description for user |
 ## Example
 
 ```
