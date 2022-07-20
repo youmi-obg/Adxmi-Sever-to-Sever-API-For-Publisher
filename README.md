@@ -134,6 +134,7 @@ GET http://ad.api.yyapi.net/v2/offline?app_id=c46b362886e42385d30c83d76abc3c51&p
 | advid     | user's Google Advertising ID (GAID), mandatory if "true" in "mandatory_device"  |
 | idfa      | user's IDFA, mandatory if "true" in "mandatory_device"          |
 | udid      | user's UDID, mandatory if "true" in "mandatory_device"  |
+| device_id      | user's Device ID(for example OAID)  |
 | package   | package name of the app originating the click            |
 | aff_sub  | For your click_id or transaction_id, to uniquely identify a single click(maximum 256)                  |
 | aff_sub2  | For your custom parameter (maximum 256)                  |
@@ -141,7 +142,6 @@ GET http://ad.api.yyapi.net/v2/offline?app_id=c46b362886e42385d30c83d76abc3c51&p
 | ua        | Do not extra the CFNetwork user-agent,extract the other one(URL encoded)                   |
 | language  | Provide the language and locale;Example,en-US                  |
 | ip        | ip of the user                  |
-| device_id        | user's Device ID(for example OAID)                  |
 
 ### Notes
 
