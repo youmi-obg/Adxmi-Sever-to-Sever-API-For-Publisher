@@ -142,6 +142,8 @@ GET http://ad.api.yyapi.net/v2/offline?app_id=c46b362886e42385d30c83d76abc3c51&p
 | ua        | Do not extra the CFNetwork user-agent,extract the other one(URL encoded)                   |
 | language  | Provide the language and locale;Example,en-US                  |
 | ip        | ip of the user                  |
+| os_version   | The device operating system version. For Example：Android: 12 / iOS: 16.2                 |
+| device_model | The device model. Android:Example: Pixel 5                 |
 
 ### Notes
 
